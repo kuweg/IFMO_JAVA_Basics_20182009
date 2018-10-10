@@ -1,5 +1,7 @@
 package ru.ifmo.cet.javabasics;
 
+import java.util.HashMap;
+
 /**
  * Нужно реализовать констурктор и метод, возвращающий слова песни про бутылки на стене.
  * <p>
@@ -32,12 +34,94 @@ package ru.ifmo.cet.javabasics;
  */
 public class BottleSong {
 
+    private int bottleTakenAtOnce;
+    private HashMap<Integer, String> digit = new HashMap<>();
+
     public BottleSong(int bottleTakenAtOnce) {
-        //TODO
+        this.bottleTakenAtOnce = bottleTakenAtOnce;
+
+        digit.put(1, "one");
+        digit.put(2, "two");
+        digit.put(3, "three");
+        digit.put(4, "four");
+        digit.put(5, "five");
+        digit.put(6, "six");
+        digit.put(7, "seven");
+        digit.put(8, "eight");
+        digit.put(9, "nine");
+        digit.put(10, "ten");
+        digit.put(11, "eleven");
+        digit.put(12, "twelve");
+        digit.put(13, "thirteen");
+        digit.put(14, "fourteen");
+        digit.put(15, "fifteen");
+        digit.put(16, "sixteen");
+        digit.put(17, "seventeen");
+        digit.put(18, "eighteen");
+        digit.put(19, "nineteen");
+        digit.put(20, "twenty");
+        digit.put(30, "thirty");
+        digit.put(40, "forty");
+        digit.put(50, "fifty");
+        digit.put(60, "sixty");
+        digit.put(70, "seventy");
+        digit.put(80, "eighty");
+        digit.put(90, "ninety");
     }
 
+
     public String getBottleSongLyrics() {
-        //TODO
-        throw new UnsupportedOperationException();
+        if (bottleTakenAtOnce > 99 || bottleTakenAtOnce < 1) {
+
+            throw new IllegalArgumentException();
+
+        }
+
+        StringBuffer output = new StringBuffer();
+
+
+        for (int remain = 99; remain > 0; remain -= bottleTakenAtOnce) {
+            output.append(remain);
+            output.append(" bottle");
+            output.append(remain != 1 ? "s" : "");
+            output.append(" of beer on the wall, ");
+            output.append(remain);
+            output.append(" bottle");
+            output.append(remain != 1 ? "s" : "");
+            output.append(" of beer.\n");
+
+            output.append("Take ");
+            if (remain - bottleTakenAtOnce < 0) {
+                bottleTakenAtOnce = remain;
+                output.append(digitToString(bottleTakenAtOnce));
+                output.append(" down and pass around, no more bottles of beer on the wall.\n");
+                break;
+            } else {
+                output.append(digitToString(bottleTakenAtOnce));
+                output.append(" down and pass around, ");
+                if (remain - bottleTakenAtOnce == 0) {
+                    output.append("no more bottles of beer on the wall.\n");
+                    break;
+                }
+                output.append(remain - bottleTakenAtOnce);
+                output.append(" bottle");
+                output.append(remain - bottleTakenAtOnce != 1 ? "s" : "");
+                output.append(" of beer on the wall.\n");
+            }
+        }
+        output.append("No more bottles of beer on the wall, no more bottles of beer.\n");
+        output.append("Go to the store and buy some more, 99 bottles of beer on the wall.\n");
+
+        return output.toString();
     }
+
+    private String digitToString(int number) {
+        if (number >= 20 && number % 10 != 0) {
+            return digit.get((number / 10) * 10) + " " + digit.get(number % 10);
+        } else {
+            return digit.get(number);
+        }
+    }
+
+
 }
