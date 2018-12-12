@@ -2,6 +2,7 @@ package ru.ifmo.cet.javabasics;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
@@ -19,6 +20,7 @@ public class WarAndPeaceExercise {
         String buffer;
         String result = "";
         List<String> strings = readAllLines(tome12Path, charset);
+        strings.addAll(Files.readAllLines(tome34Path, charset));
         StringBuilder listString = new StringBuilder();
         for (String s : strings) {
             listString.append(s);
