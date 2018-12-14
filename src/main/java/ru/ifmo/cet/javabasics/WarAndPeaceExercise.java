@@ -38,15 +38,15 @@ public class WarAndPeaceExercise {
 
             res = res.replaceAll("[^а-яА-Яa-zA-Z]", " ");
 
-            for (String word : res.split(" ")) {
-                if (word.length() >= 4) {
+            for (String words : res.split(" ")) {
+                if (words.length() >= 4) {
 
-                    word = word.toLowerCase();
+                    words = words.toLowerCase();
 
-                    if ((message.containsKey(word))) {
-                        message.put(word, message.get(word) + 1);
+                    if ((message.containsKey(words))) {
+                        message.put(words, message.get(words) + 1);
                     } else {
-                        message.put(word, 1);
+                        message.put(words, 1);
 
                     }
                 }
