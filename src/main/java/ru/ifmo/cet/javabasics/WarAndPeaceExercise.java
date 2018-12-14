@@ -20,7 +20,7 @@ public class WarAndPeaceExercise {
         String buffer;
         String result = "";
         List<String> strings = readAllLines(tome12Path, charset);
-        strings.addAll(Files.readAllLines(tome34Path, charset));
+        strings.addAll(readAllLines(tome34Path, charset));
         StringBuilder listString = new StringBuilder();
         for (String s : strings) {
             listString.append(s);
@@ -28,7 +28,7 @@ public class WarAndPeaceExercise {
 
         }
 
-            buffer = listString.toString();
+        buffer = listString.toString();
         String[] buffer2 = buffer.split(" ");
         // TODO map lowercased words to its amount in text and concatenate its entries.
         // TODO Entries in final String should be also sorted by amount and then in alphabetical order if needed.
