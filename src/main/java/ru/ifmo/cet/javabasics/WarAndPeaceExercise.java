@@ -11,7 +11,6 @@ import java.util.stream.Stream;
 
 import static java.nio.file.Files.readAllLines;
 
-import static java.nio.file.Files.readAllLines;
 
 
 public class WarAndPeaceExercise {
@@ -36,15 +35,9 @@ public class WarAndPeaceExercise {
         List<Map.Entry<String, Integer>> entrym = new ArrayList<>(message.entrySet());
         entrym.sort(Map.Entry.comparingByKey());
         entrym.sort(Map.Entry.<String, Integer>comparingByValue().reversed());
-
-        /* return entrym.stream().filter(entrance -> (entrance.getValue() >=10)).
-         message(entrance -> entrance.getKey() + " " + entrance.getValue()); */
-
-
         result = entrym.stream().filter(entrance -> (entrance.getValue() >= 10)).
                 map(entrance -> entrance.getKey() + " - " + entrance.getValue())
                 .collect(Collectors.joining("\n"));
-        // throw new UnsupportedOperationException();
         return result.trim();
     }
 
