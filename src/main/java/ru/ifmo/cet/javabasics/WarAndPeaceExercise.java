@@ -16,12 +16,13 @@ import static java.nio.file.Files.readAllLines;
 public class WarAndPeaceExercise {
 
     public static HashMap<String, Integer> message = new HashMap<>();
-    final static Path tome12Path = Paths.get("src", "main", "resources", "WAP12.txt");
-    final static Path tome34Path = Paths.get("src", "main", "resources", "WAP34.txt");
-    final  static Charset charset = Charset.forName("windows-1251");
-    static String result ="";
+
 
     public static String warAndPeace() throws IOException {
+        final Path tome12Path = Paths.get("src", "main", "resources", "WAP12.txt");
+        final  Path tome34Path = Paths.get("src", "main", "resources", "WAP34.txt");
+        final   Charset charset = Charset.forName("windows-1251");
+        String result ="";
         List<String> strings = readAllLines(tome12Path, charset);
         strings.addAll(readAllLines(tome34Path, charset));
         String buffer = strings.toString();
